@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Requirements</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
+  <link href="css/main.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <!--SIDE NAVIGATION-->
+  <div id="mySidenav" class="sidenav">
+    <button id="requirementsButton" class="sectionLinks"> <a href="https://vrubliuk.github.io/requirements/">Requirements</a></button>
+    <button id="officeLeadersButton" class="sectionLinks"><a href="https://vrubliuk.github.io/requirements/office-leaders">Office leaders</a></button>
+    <button id="railLoadsButton" class="sectionLinks"><a href="https://vrubliuk.github.io/requirements/rail-loads">Rail loads</a></button>
+    <button id="invoicingButton" class="sectionLinks">Invoicing</button>
+  </div>
+  <!--CONTENT-->
+  <div id="requirements" class="sectionContent">
+    <div class="searchSection">
+      <i id="searchIcon" class="fa fa-search" aria-hidden="true"></i>
+      <i id="switchIcon" class="fa fa-exchange" aria-hidden="true" title="Search by documentation"></i>
+      <input type="text" id="myInput" placeholder="by customer" title="Type in a customer name">
+      <div class="alphabet">
+        <ul>
+          <li class="letterButton">A</li>
+          <li class="letterButton">B</li>
+          <li class="letterButton">C</li>
+          <li class="letterButton">D</li>
+          <li class="letterButton">E</li>
+          <li class="letterButton">F</li>
+          <li class="letterButton">G</li>
+          <li class="letterButton">H</li>
+          <li class="letterButton">I</li>
+          <li class="letterButton">J</li>
+          <li class="letterButton">K</li>
+          <li class="letterButton">L</li>
+          <li class="letterButton">M</li>
+        </ul>
+        <ul>
+          <li class="letterButton">N</li>
+          <li class="letterButton">O</li>
+          <li class="letterButton">P</li>
+          <li class="letterButton">Q</li>
+          <li class="letterButton">R</li>
+          <li class="letterButton">S</li>
+          <li class="letterButton">T</li>
+          <li class="letterButton">U</li>
+          <li class="letterButton">V</li>
+          <li class="letterButton">W</li>
+          <li class="letterButton">X</li>
+          <li class="letterButton">Y</li>
+          <li class="letterButton">Z</li>
+        </ul>
+      </div>
+    </div>
+    <div class="requirementsTableSection"></div>
+    <p class="errorMessage">Nothing has been found</p>
+  </div>
+  <div id="releaseSheets" class="sectionContent">
+    <div class="releaseSheetsTableSection"></div>
+  </div>
+  <div id="officeLeaders" class="sectionContent">
+    <div class="officeLeadersTableSection"></div>
+  </div>
+  <div id="railLoads" class="sectionContent">
+    <div class="railLoadsTableSection"></div>
+    <div class="railLoadsTableSection"></div>
+  </div>
+  <div id="invoicing" class="sectionContent sectionContent2">
+    <div class="searchSection2">
+      <div class="invoicingSettingsDropdown" style="float:left;">
+        <i id="settingsIcon" class="fa fa-cog" aria-hidden="true" title="Columns appearance"></i>
+        <div class="invoicingSettingsDropdownContent" style="left:0;">
+          <ul>
+            <li v-for="column in allColumns">
+              <input class="invoicingCheckboxes" type="checkbox" :value="column" v-model='columnsToShow'>
+              <span>{{column.toUpperCase()}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <i id="searchIcon2" class="fa fa-search" aria-hidden="true"></i>
+      <input v-model.trim="input" @focus="removeAlphabetFilters" type="text" id="myInput2" :placeholder="'by ' + firstColumnName + ' or ' + idColumnName"
+        title="Type at least 3 symbols to start search">
+      <div class="alphabet2">
+        <span v-for="option in filters" @click="filterByAlphabet(option)" :class="{redLetter: filteredBy === option}">{{option.toUpperCase()}}</span>
+      </div>
+    </div>
+    <div class="invoicingTableSection">
+      <table id='invoicingTable' class='myTable'>
+        <tr>
+          <th v-for="(cell, prop) in table[0]" v-if="columnsToShow.indexOf(prop) !== -1">{{prop.toUpperCase()}}</th>
+        </tr>
+        <tr v-for="row in table">
+          <td v-for="(cell, prop) in row" v-if="columnsToShow.indexOf(prop) !== -1" :class="{numberCell: prop === idColumnName}">{{cell}}</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <p v-if="showErrorColumns" class="errorMessage2">No columns were selected :(</p>
+      <p v-if="showError" class="errorMessage2">Nothing has been found :(</p>
+    </div>
+  </div>
+
+  <i id="arrowUp" class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="javascript/main.js"></script>
+</body>
+
+</html>

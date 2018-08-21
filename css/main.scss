@@ -1,0 +1,452 @@
+ //EXTEND
+ %clearfix {
+   &:after {
+     content: "";
+     display: table;
+     clear: both;
+   }
+ } 
+ 
+ // GENERAL STYLES
+ * {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: 'Roboto', sans-serif;
+   &:focus {
+     outline: none !important;
+   }
+ } 
+ 
+ // remove IE's “clear field” X button
+ input::-ms-clear {
+   display: none;
+ }
+
+ a,
+ a:hover,
+ a:visited {
+   color: inherit;
+   text-decoration: none;
+ }
+
+ body {
+   position: relative;
+   overflow-y: scroll;
+ } // PRELOADER
+ .preloader {
+   width: 100%;
+   height: 100%;
+   background-color: white;
+   position: fixed;
+   z-index: 999;
+ }
+
+ .preloader img {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin-top: -85px;
+   margin-left: -85px;
+ }
+ 
+ // NAVIGATION
+ #mySidenav button {
+   cursor: pointer;
+   border: none;
+   position: fixed;
+   left: -140px;
+   transition: 0.5s;
+  //  padding: 15px;
+   width: 160px;
+   text-decoration: none;
+   color: white;
+   z-index: 5;
+   height: 50px;
+   font-size: 16px;
+ }
+
+ #mySidenav button:hover {
+   left: 0;
+ }
+
+ #requirementsButton {
+   top: 25px;
+   background-color: #f44336;
+ }
+
+//  #releaseSheetsButton {
+//    top: 100px;
+//    background-color: #4CAF50;
+//  }
+
+ #officeLeadersButton {
+   top: 100px; 
+   background-color: #2196F3;
+ }
+
+ #railLoadsButton {
+   top: 175px; 
+   background-color: #4CAF50;
+ }
+
+ #invoicingButton {
+   top: 250px; 
+   background-color: #ff9900;
+ }
+ 
+ .sectionLinks a {
+   display: inline-block;
+   height: 100%;
+   width: 100%;
+   padding: 15px;
+ }
+ 
+ // TABS GENERAL
+ .sectionContent {
+   display: none;
+   max-width: 1250px;
+   min-width: 350px;
+   margin: auto;
+   padding: 25px;
+ }
+
+ .sectionContent2 {
+   min-width: 100%;
+   padding: 25px 40px;
+ }
+
+ .myTable {
+   margin: auto;
+   border-collapse: collapse;
+   width: 100%;
+   border: 1px solid #ddd;
+   font-size: 14px;
+ }
+
+ .myTable td {
+   text-align: left;
+   padding: 5px;
+   border: 1px solid #ddd;
+ }
+
+ .myTable th {
+   font-size: 18px;
+   text-align: center;
+   background-color: #f1f1f1;
+   padding: 10px;
+   border: 1px solid #ddd;
+   text-transform: uppercase;
+ }
+
+ .myTable tr:nth-child(odd) {
+   background-color: #f1f1f1;
+ }
+
+ .myTable td:first-child {
+   font-size: 18px;
+ }
+
+ #customersTable {
+   th:first-child {
+     width: 30%;
+   }
+   td:first-child {
+     width: 30%;
+   }
+   tr:hover {
+     background-color: #ffe6e6;
+   }
+ }
+
+ .customersTableRowHover {
+   background-color: #ffe6e6 !important;
+ }
+
+ #releaseSheetsTable {
+   th:first-child,
+   td:first-child,
+   th:last-child,
+   td:last-child {
+     width: 25%;
+   }
+   tr:hover {
+     background-color: #e6ffe6;
+   }
+ }
+
+ #officeLeadersTable {
+   th,
+   td {
+     width: 25%;
+   }
+   tr:hover {
+     background-color: #e6f0ff;
+   }
+   td:nth-child(2) {
+     font-size: 18px;
+   }
+ }
+
+ #railLoadsTable1,
+ #railLoadsTable2 {
+   max-width: 800px;
+   tr:hover {
+     background-color: #f9e6ff;
+   }
+   td {
+     width: 50%;
+     &:first-child {
+       font-size: initial;
+     }
+   }
+ }
+
+ .invoicingTableSection {
+   min-width: 900px;
+ }
+
+ .numberCell {
+   min-width: 110px;
+ }
+
+ #invoicingTable {
+   th {
+     font-size: 13px;
+     padding: 10px 4px;
+   }
+   td {
+     font-size: 13px;
+     max-width: 250px;
+     overflow: auto;
+     padding: 4px;
+   }
+   tr:hover {
+     background-color: #ffebcc;
+   }
+ }
+
+ .invoicingTableRowHover {
+   background-color: #ffebcc !important;
+ }
+
+ .invoicingSettingsDropdown {
+   position: relative;
+   display: inline-block;
+ }
+
+ .invoicingSettingsDropdownContent {
+   top: 50px;
+   display: none;
+   position: absolute;
+   background-color: rgba(51, 51, 51, 0.9);
+   width: 300px;
+   z-index: 1;
+ }
+
+ .invoicingSettingsDropdownContent {
+   padding: 6px 0px;
+   li {
+     list-style-type: none;
+     color: #d9d9d9;
+     padding: 6px 13px;
+     display: block;
+     &:hover {
+       color: white;
+     }
+     span {
+       vertical-align: middle;
+     }
+     input {
+       margin-right: 9px;
+       vertical-align: middle;
+     }
+   }
+ }
+
+ .invoicingSettingsDropdown:hover .invoicingSettingsDropdownContent {
+   display: block;
+ } 
+ 
+ //REQUIREMENTS TAB
+ .searchSection {
+   position: relative;
+   background-color: rgb(51, 51, 51);
+   margin-bottom: 25px;
+   @extend %clearfix;
+ }
+
+ .searchSection2 {
+   position: relative;
+   background-color: rgb(51, 51, 51);
+   margin-bottom: 25px;
+   @extend %clearfix;
+ }
+
+ #searchIcon,
+ #searchIcon2,
+ #switchIcon,
+ #settingsIcon {
+   color: #d9d9d9;
+   position: absolute;
+   z-index: 3;
+   font-size: 20px;
+   top: 15px;
+   left: 40px;
+   width: 40px;
+   text-align: center;
+ }
+
+ #switchIcon {
+   background-color: rgb(51, 51, 51);
+   height: 50px;
+   top: 0px;
+   left: 0px;
+   text-align: center;
+   padding-top: 15px;
+   &:hover {
+     cursor: pointer;
+     color: white;
+   }
+ }
+
+ #settingsIcon {
+   background-color: rgb(51, 51, 51);
+   height: 50px;
+   top: 0px;
+   left: 0px;
+   text-align: center;
+   padding-top: 15px;
+   &:hover {
+     cursor: pointer;
+     color: white;
+   }
+ }
+
+ #myInput,
+ #myInput2 {
+   background-color: #4b4f53;
+   color: #d9d9d9;
+   z-index: 2;
+   position: absolute;
+   width: 30%;
+   height: 50px;
+   font-size: 24px;
+   padding: 12px 0px 12px 80px;
+   border: none;
+   transition: width 0.4s ease-in-out;
+   text-transform: uppercase;
+ }
+
+ #myInput::placeholder,
+ #myInput2::placeholder {
+   color: #d9d9d9;
+   color: grey;
+ }
+
+ .alphabet {
+   user-select: none;
+   padding: 0 15px;
+   float: right;
+   width: 70%;
+   text-align: justify;
+   text-align-last: justify;
+   ul {
+     display: inline;
+   }
+   li {
+     font-size: 24px;
+     line-height: 50px;
+     text-align: center;
+     display: inline;
+     color: #d9d9d9;
+     &:hover {
+       color: white;
+       cursor: pointer;
+     }
+   }
+ }
+
+ .alphabet2 {
+   user-select: none;
+   padding: 0 15px;
+   float: right;
+   width: 70%;
+   display: flex;
+   justify-content: space-between;
+   span {
+     font-size: 24px;
+     line-height: 50px;
+     text-align: center;
+     display: inline;
+     color: #d9d9d9;
+     &:hover {
+       color: white;
+       cursor: pointer;
+     }
+   }
+ }
+
+ .redLetter {
+   color: #f44336 !important;
+ }
+
+ .errorMessage {
+   display: none;
+   padding: 15px 5px;
+   color: #f44336;
+ }
+
+ .errorMessage2 {
+   padding: 0px 5px;
+   color: #f44336;
+ }
+
+ .errorMessageIE {
+   text-align: center;
+   padding: 0px 5px;
+   color: #f44336;
+   a {
+     text-decoration: underline;
+   }
+ } 
+ 
+ .railLoadsTableSection {
+   margin-bottom: 25px;
+ } 
+ 
+ #arrowUp {
+   font-size: 75px;
+   display: none;
+   position: fixed;
+   z-index: 99;
+   bottom: 50px;
+   right: 50px;
+   color: #f44336;
+   cursor: pointer;
+ } 
+ 
+
+ @media screen and (max-width: 1300px) {
+   #mySidenav button {
+     left: -150px;
+   }
+ }
+
+ @media screen and (max-width: 1000px) {
+   #myInput {
+     width: 100%;
+     position: relative;
+   }
+   .alphabet {
+     width: 100%;
+   }
+ }
+
+ @media screen and (max-width: 600px) {
+   .alphabet {
+     ul {
+       display: block;
+     }
+   }
+ }
