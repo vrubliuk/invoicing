@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(".preloader").delay(1000).fadeOut(500);
     document.getElementById('invoicingButton').click();
     // refresh page each 20 minutes
     setInterval(function () {
