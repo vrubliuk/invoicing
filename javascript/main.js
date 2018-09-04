@@ -6,6 +6,15 @@ $(document).ready(function () {
         location.reload();
     }, 1200000);
 
+    document.getElementById("requirementsButton").onclick = function() {
+        location.href = "https://vrubliuk.github.io/requirements/#/";
+    }
+    document.getElementById("officeLeadersButton").onclick = function() {
+        location.href = "https://vrubliuk.github.io/requirements/#/offices";
+    }
+    document.getElementById("railLoadsButton").onclick = function() {
+        location.href = "https://vrubliuk.github.io/requirements/#/rail-loads";
+    }
 });
 
 var activeSection = "invoicing";
